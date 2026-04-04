@@ -1,0 +1,463 @@
+---
+layout: default
+title: Aryan Kolapkar
+---
+
+<style>
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --accent: #111827;
+    --shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --radius: 22px;
+    --maxw: 1120px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+  }
+
+  .page-wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: 1.5fr 0.8fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 48px;
+  }
+
+  .hero-left h1 {
+    margin: 0 0 8px;
+    font-size: 3rem;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    font-weight: 800;
+  }
+
+  .hero-left .subtitle {
+    margin: 0 0 22px;
+    color: var(--muted);
+    font-size: 1.15rem;
+    max-width: 700px;
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0 0;
+  }
+
+  .socials a,
+  .primary-btn,
+  .chip {
+    text-decoration: none !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.7);
+    padding: 10px 14px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  }
+
+  .socials a:hover,
+  .primary-btn:hover,
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .profile-card {
+    width: 100%;
+    max-width: 250px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 18px;
+    box-shadow: var(--shadow);
+  }
+
+  .profile-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 22px;
+    display: block;
+  }
+
+  .section {
+    margin: 36px 0 54px;
+  }
+
+  .section h2 {
+    margin: 0 0 18px;
+    font-size: 2rem;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+  }
+
+  .about-box,
+  .card,
+  .timeline-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .about-box {
+    padding: 28px;
+  }
+
+  .about-box p {
+    margin: 0 0 18px;
+    color: #374151;
+    font-size: 1.05rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .card {
+    padding: 26px;
+  }
+
+  .card h3 {
+    margin: 0 0 8px;
+    font-size: 1.32rem;
+    letter-spacing: -0.02em;
+  }
+
+  .meta {
+    color: var(--muted);
+    font-size: 0.98rem;
+    margin-bottom: 12px;
+  }
+
+  .card p {
+    margin: 0 0 14px;
+    color: #374151;
+  }
+
+  .card-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .timeline-card {
+    padding: 24px 26px;
+  }
+
+  .timeline-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 8px;
+  }
+
+  .timeline-top h3 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  .role {
+    font-size: 1rem;
+    color: #374151;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .date {
+    color: var(--muted);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .timeline-card ul {
+    margin: 12px 0 0;
+    padding-left: 20px;
+    color: #374151;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .footer-contact {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .contact-box {
+    padding: 22px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+  }
+
+  .contact-box h4 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-box a,
+  .card a,
+  .about-box a {
+    color: var(--accent);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .contact-box a:hover,
+  .card a:hover,
+  .about-box a:hover {
+    text-decoration: underline;
+  }
+
+  .small {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .hero,
+    .grid-2,
+    .footer-contact {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-left h1 {
+      font-size: 2.4rem;
+    }
+
+    .timeline-top {
+      flex-direction: column;
+    }
+
+    .date {
+      white-space: normal;
+    }
+  }
+</style>
+
+<div class="page-wrap">
+
+  <section class="hero">
+    <div class="hero-left">
+      <h1>Aryan Kolapkar</h1>
+      <p class="subtitle">
+        ML Engineer building LLM post-training systems, multimodal AI pipelines, and real-world products that ship.
+      </p>
+
+      <div class="socials">
+        <a href="https://huggingface.co/aryan-kolapkar">🤗 HuggingFace</a>
+        <a href="https://github.com/arubittu">💻 GitHub</a>
+        <a href="https://medium.com/@aryan.kolapkar">✍️ Medium</a>
+        <a href="mailto:aryan.kolapkar@gmail.com">📧 Email</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="profile-card">
+        <img src="YOUR_IMAGE_URL" alt="Aryan Kolapkar profile photo">
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>About</h2>
+    <div class="about-box">
+      <p>
+        I am an ML Engineer from <b>IIT Bombay</b> with experience building applied AI systems across LLMs, audio, video, and evaluation pipelines. My work has focused on taking ideas from prototype to usable products across media, education, and enterprise AI.
+      </p>
+      <p>
+        I have worked on <b>LLM post-training</b>, <b>LLM-as-a-Judge evaluation systems</b>, <b>video search with VLMs</b>, <b>deepfake audio detection</b>, and <b>multilingual text-to-video pipelines</b>. I previously worked at <b>Bosch</b> and later co-founded an <b>AI consultancy</b> building software for clients.
+      </p>
+      <a class="primary-btn" href="#work">View My Work</a>
+    </div>
+  </section>
+
+  <section class="section" id="featured">
+    <h2>Featured Work</h2>
+    <div class="cards">
+
+      <div class="card">
+        <h3>MathReasoner-Mini-1.5B</h3>
+        <div class="meta">LLM Post-Training · SFT + RLVR (GRPO) · Qwen2.5-1.5B</div>
+        <p>
+          Built and post-trained a math reasoning model on top of Qwen2.5-1.5B, achieving <b>25% higher GSM8K accuracy</b>. The work involved supervised fine-tuning, reinforcement learning style post-training, and structured evaluation for reasoning performance.
+        </p>
+        <div class="card-links">
+          <a class="chip" href="https://huggingface.co/aryan-kolapkar/MathReasoner-Mini-1.5b">Model</a>
+          <a class="chip" href="https://huggingface.co/aryan-kolapkar">Profile</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>DeepClip for NDTV</h3>
+        <div class="meta">Video Search · CLIP Embeddings · VLMs · RAG</div>
+        <p>
+          Built an AI-powered text-based video search system that helped editors quickly find newsworthy moments from long video archives. The system used multimodal embeddings and retrieval to reduce manual search time, saving roughly <b>40% editing effort</b>.
+        </p>
+        <div class="card-links">
+          <a class="chip" href="https://www.loom.com/share/bb305a1e7f064e598e2e6577253996ac">Demo</a>
+          <a class="chip" href="https://www.ndtv.com/">NDTV</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Deepfake Audio Detection</h3>
+        <div class="meta">Wav2Vec · Audio Classification · Real-Time Inference</div>
+        <p>
+          Built Wav2Vec-based models on more than <b>2M audio samples</b> for real-time deepfake audio detection. Achieved <b>93% accuracy on ASVspoof</b> with a production-oriented inference pipeline.
+        </p>
+        <div class="card-links">
+          <a class="chip" href="https://www.projectkarna.com/">Project Karna</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Indic Text-to-Video Pipeline</h3>
+        <div class="meta">Multilingual Generation · LLMs · Imagen · STT · TTS</div>
+        <p>
+          Built a text-to-video pipeline for government-scheme content targeted at Indian farmers, generating <b>1,500+ videos in 10+ languages</b>. The system orchestrated language, speech, and image/video modules end to end.
+        </p>
+        <div class="card-links">
+          <a class="chip" href="https://play.google.com/store/apps/details?id=com.hullagri">HullAgri</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <h2>Work Experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-card">
+        <div class="timeline-top">
+          <div>
+            <h3>AI Consultancy</h3>
+            <div class="role">Co-founder · Building AI/ML software for clients</div>
+          </div>
+          <div class="date">Aug 2024 to Nov 2025</div>
+        </div>
+        <ul>
+          <li>Built and post-trained <b>MathReasoner-Mini-1.5B</b> for Fermi AI, improving GSM8K performance by 25%.</li>
+          <li>Implemented end-to-end <b>LLM evaluation pipelines</b> for multi-turn tutor systems using LLM-as-a-Judge aligned to human-annotated golden data.</li>
+          <li>Built <b>DeepClip</b> for NDTV for video search and retrieval over long-form media content.</li>
+          <li>Developed multilingual text-to-video systems and real-time audio classification pipelines for client use cases.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-card">
+        <div class="timeline-top">
+          <div>
+            <h3>BGSW, Bosch</h3>
+            <div class="role">ML Engineer · Heart Rate and Emotion Detection</div>
+          </div>
+          <div class="date">July 2023 to July 2024</div>
+        </div>
+        <ul>
+          <li>Trained <b>Contrast-Phys</b> and <b>PhysFormer</b> for heart rate detection from driver-facing dashcam video.</li>
+          <li>Achieved <b>3.5 MAE</b> and <b>2.4 MAE</b> respectively on proprietary data.</li>
+          <li>Implemented <b>SparsePPG</b> signal-processing based extraction from face videos.</li>
+          <li>Designed synthetic data generation pipelines using <b>IP-Adapters</b> and <b>SDXL</b> for emotion-related face generation.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="grid-2">
+      <div class="card">
+        <h2 style="margin-top:0;">Education</h2>
+        <h3>Indian Institute of Technology, Bombay</h3>
+        <div class="meta">B.Tech. in Engineering Physics · 2019 to 2023</div>
+        <p>
+          Undergraduate training in engineering, mathematics, and physics, with growing specialization in machine learning and applied AI systems.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-top:0;">Blogs</h2>
+        <p>
+          I write about LLM training, evaluation, multimodal systems, and practical AI engineering.
+        </p>
+        <div class="card-links">
+          <a class="chip" href="https://medium.com/@aryan.kolapkar">Read on Medium</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Contact</h2>
+    <div class="footer-contact">
+      <div class="contact-box">
+        <h4>Email</h4>
+        <a href="mailto:aryan.kolapkar@gmail.com">aryan.kolapkar@gmail.com</a>
+        <div class="small">Best for consulting, collaborations, and roles.</div>
+      </div>
+
+      <div class="contact-box">
+        <h4>GitHub</h4>
+        <a href="https://github.com/arubittu">github.com/arubittu</a>
+        <div class="small">Code, experiments, and project repositories.</div>
+      </div>
+
+      <div class="contact-box">
+        <h4>HuggingFace</h4>
+        <a href="https://huggingface.co/aryan-kolapkar">huggingface.co/aryan-kolapkar</a>
+        <div class="small">Models, checkpoints, and research artifacts.</div>
+      </div>
+    </div>
+  </section>
+
+</div>
