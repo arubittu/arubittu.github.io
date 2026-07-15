@@ -1,462 +1,955 @@
----
-layout: default
-title: AK
----
-<style>
-  :root {
-    --bg: #f7f7f5;
-    --card: #ffffff;
-    --text: #111827;
-    --muted: #6b7280;
-    --border: #e5e7eb;
-    --accent: #111827;
-    --shadow: 0 10px 30px rgba(0,0,0,0.05);
-    --radius: 22px;
-    --maxw: 1120px;
-  }
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Aryan Kolapkar is an AI engineer building LLM post-training systems, multimodal pipelines, and useful AI products.">
+    <meta name="theme-color" content="#f2f0e9">
+    <title>Aryan Kolapkar — AI engineer</title>
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+      :root {
+        --paper: #f2f0e9;
+        --ink: #1b1c1a;
+        --muted: #6d6d65;
+        --line: rgba(27, 28, 26, 0.16);
+        --blue: #315bd6;
+        --blue-soft: #dce4ff;
+        --moss: #516047;
+        --moss-soft: #dfe7d8;
+        --rust: #a44d32;
+        --rust-soft: #f1d9d0;
+        --shadow-ring: 0 0 0 1px rgba(0, 0, 0, 0.07), 0 1px 2px -1px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.05);
+        --shadow-ring-hover: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.08), 0 12px 30px rgba(0, 0, 0, 0.07);
+        --content: 760px;
+      }
 
-  html {
-    scroll-behavior: smooth;
-  }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    line-height: 1.6;
-  }
+      html {
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
 
-  .page-wrap {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 48px 24px 96px;
-  }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-size: 17px;
+        line-height: 1.65;
+      }
 
-  .hero {
-    display: grid;
-    grid-template-columns: 1.5fr 0.8fr;
-    gap: 40px;
-    align-items: start;
-    margin-bottom: 48px;
-  }
+      ::selection {
+        background: var(--blue-soft);
+        color: var(--ink);
+      }
 
-  .hero-left h1 {
-    margin: 0 0 8px;
-    font-size: 3rem;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    font-weight: 800;
-  }
+      a {
+        color: inherit;
+      }
 
-  .hero-left .subtitle {
-    margin: 0 0 22px;
-    color: var(--muted);
-    font-size: 1.15rem;
-    max-width: 700px;
-  }
+      a:focus-visible,
+      button:focus-visible {
+        outline: 2px solid var(--blue);
+        outline-offset: 4px;
+      }
 
-  .socials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin: 20px 0 0;
-  }
+      h1,
+      h2,
+      h3 {
+        text-wrap: balance;
+      }
 
-  .socials a,
-  .primary-btn,
-  .chip {
-    text-decoration: none !important;
-    color: var(--text) !important;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.7);
-    padding: 10px 14px;
-    border-radius: 14px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-  }
+      p,
+      li {
+        text-wrap: pretty;
+      }
 
-  .socials a:hover,
-  .primary-btn:hover,
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-  }
+      .site-shell {
+        width: min(calc(100% - 40px), var(--content));
+        margin-inline: auto;
+      }
 
-  .hero-right {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
+      .site-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 88px;
+        border-bottom: 1px solid var(--line);
+      }
 
-  .profile-card {
-    width: 100%;
-    max-width: 250px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 28px;
-    padding: 18px;
-    box-shadow: var(--shadow);
-  }
+      .monogram {
+        display: inline-grid;
+        width: 44px;
+        height: 44px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: -0.06em;
+        text-decoration: none;
+        transition-property: transform, background-color;
+        transition-duration: 160ms;
+        transition-timing-function: ease-out;
+      }
 
-  .profile-card img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 22px;
-    display: block;
-  }
+      .monogram:hover {
+        background: var(--blue);
+        transform: rotate(-5deg);
+      }
 
-  .section {
-    margin: 36px 0 54px;
-  }
+      .monogram:active,
+      .nav-link:active,
+      .button-link:active,
+      .social-link:active {
+        scale: 0.96;
+      }
 
-  .section h2 {
-    margin: 0 0 18px;
-    font-size: 2rem;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-  }
+      .site-nav {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
 
-  .about-box,
-  .card,
-  .timeline-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-  }
+      .nav-link {
+        position: relative;
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        padding: 0 12px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+        text-decoration: none;
+        transition-property: color, scale;
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+      }
 
-  .about-box {
-    padding: 28px;
-  }
+      .nav-link:hover {
+        color: var(--ink);
+      }
 
-  .about-box p {
-    margin: 0 0 18px;
-    color: #374151;
-    font-size: 1.05rem;
-  }
+      main {
+        padding-bottom: 88px;
+      }
 
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 132px;
+        gap: 52px;
+        align-items: start;
+        padding: 92px 0 116px;
+      }
 
-  .card {
-    padding: 26px;
-  }
+      .hero h1 {
+        max-width: 570px;
+        margin: 0 0 24px;
+        font-size: clamp(2.7rem, 8vw, 5.4rem);
+        font-weight: 720;
+        letter-spacing: -0.075em;
+        line-height: 0.95;
+      }
 
-  .card h3 {
-    margin: 0 0 8px;
-    font-size: 1.32rem;
-    letter-spacing: -0.02em;
-  }
+      .hero-intro {
+        max-width: 570px;
+        margin: 0;
+        font-size: clamp(1.08rem, 2.6vw, 1.26rem);
+        line-height: 1.55;
+      }
 
-  .meta {
-    color: var(--muted);
-    font-size: 0.98rem;
-    margin-bottom: 12px;
-  }
+      .portrait-wrap {
+        position: relative;
+        margin-top: 10px;
+        transform: rotate(2deg);
+      }
 
-  .card p {
-    margin: 0 0 14px;
-    color: #374151;
-  }
+      .portrait-wrap::after {
+        content: "me, somewhere sunny";
+        display: block;
+        margin-top: 9px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        text-align: center;
+      }
 
-  .card-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-  }
+      .portrait {
+        display: block;
+        width: 128px;
+        height: 154px;
+        object-fit: cover;
+        border-radius: 3px;
+        outline: 1px solid rgba(0, 0, 0, 0.1);
+        outline-offset: -1px;
+        box-shadow: var(--shadow-ring);
+        filter: saturate(0.82) contrast(1.02);
+      }
 
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
+      .highlight {
+        display: inline;
+        padding: 0.04em 0.18em 0.11em;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
 
-  .timeline-card {
-    padding: 24px 26px;
-  }
+      .highlight.blue {
+        background: var(--blue-soft);
+      }
 
-  .timeline-top {
-    display: flex;
-    justify-content: space-between;
-    gap: 16px;
-    align-items: start;
-    margin-bottom: 8px;
-  }
+      .highlight.moss {
+        background: var(--moss-soft);
+      }
 
-  .timeline-top h3 {
-    margin: 0;
-    font-size: 1.3rem;
-  }
+      .highlight.rust {
+        background: var(--rust-soft);
+      }
 
-  .role {
-    font-size: 1rem;
-    color: #374151;
-    font-weight: 600;
-    margin-top: 4px;
-  }
+      .now-block {
+        max-width: 570px;
+        margin-top: 36px;
+      }
 
-  .date {
-    color: var(--muted);
-    white-space: nowrap;
-    font-weight: 600;
-  }
+      .eyebrow {
+        margin: 0 0 10px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
 
-  .timeline-card ul {
-    margin: 12px 0 0;
-    padding-left: 20px;
-    color: #374151;
-  }
+      .plain-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
+      .plain-list li {
+        display: flex;
+        gap: 10px;
+        align-items: baseline;
+      }
 
-  .footer-contact {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
+      .plain-list li::before {
+        content: "↳";
+        color: var(--blue);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
 
-  .contact-box {
-    padding: 22px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    box-shadow: var(--shadow);
-  }
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 18px;
+        margin-top: 36px;
+      }
 
-  .contact-box h4 {
-    margin: 0 0 8px;
-    font-size: 1rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
+      .social-link,
+      .inline-link,
+      .project-link,
+      .note-link {
+        text-decoration-thickness: 1px;
+        text-underline-offset: 4px;
+        transition-property: color, text-decoration-color, scale;
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+      }
 
-  .contact-box a,
-  .card a,
-  .about-box a {
-    color: var(--accent);
-    font-weight: 700;
-    text-decoration: none;
-  }
+      .social-link {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 0.94rem;
+        text-decoration-color: transparent;
+      }
 
-  .contact-box a:hover,
-  .card a:hover,
-  .about-box a:hover {
-    text-decoration: underline;
-  }
+      .social-link:hover,
+      .inline-link:hover,
+      .project-link:hover,
+      .note-link:hover {
+        color: var(--blue);
+        text-decoration-color: currentColor;
+      }
 
-  .small {
-    color: var(--muted);
-    font-size: 0.95rem;
-  }
+      .section {
+        position: relative;
+        padding: 88px 0;
+        border-top: 1px solid var(--line);
+      }
 
-  @media (max-width: 900px) {
-    .hero,
-    .grid-2,
-    .footer-contact {
-      grid-template-columns: 1fr;
-    }
+      .section-index {
+        position: absolute;
+        top: 94px;
+        left: -58px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11px;
+        font-variant-numeric: tabular-nums;
+      }
 
-    .hero-left h1 {
-      font-size: 2.4rem;
-    }
+      .section-heading {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 40px;
+        margin-bottom: 46px;
+      }
 
-    .timeline-top {
-      flex-direction: column;
-    }
+      .section-heading h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 5vw, 2.6rem);
+        font-weight: 680;
+        letter-spacing: -0.045em;
+        line-height: 1;
+      }
 
-    .date {
-      white-space: normal;
-    }
-  }
-</style>
+      .section-heading p {
+        max-width: 470px;
+        margin: 0;
+        color: var(--muted);
+      }
 
-<div class="page-wrap">
+      .project-list {
+        border-top: 1px solid var(--ink);
+      }
 
-  <section class="hero">
-    <div class="hero-left">
-      <h1>Aryan Kolapkar</h1>
-      <p class="subtitle">
-        ML Engineer building LLM post-training systems, multimodal AI pipelines, and real-world products that ship.
-      </p>
+      .project {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr) 130px;
+        gap: 22px;
+        padding: 28px 0 30px;
+        border-bottom: 1px solid var(--line);
+      }
 
-      <div class="socials">
-        <a href="https://huggingface.co/aryan-kolapkar">🤗 HuggingFace</a>
-        <a href="https://github.com/arubittu">💻 GitHub</a>
-        <a href="https://medium.com/@aryan.kolapkar">✍️ Medium</a>
-        <a href="mailto:aryan.kolapkar@gmail.com">📧 Email</a>
-      </div>
-    </div>
+      .project-number {
+        padding-top: 5px;
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 11px;
+        font-variant-numeric: tabular-nums;
+      }
 
-    <div class="hero-right">
-      <div class="profile-card">
-        <img src="WhatsApp Image 2026-04-05 at 23.35.07.jpeg" alt="Aryan Kolapkar profile photo">
-      </div>
-    </div>
-  </section>
+      .project h3 {
+        margin: 0 0 8px;
+        font-size: 1.28rem;
+        line-height: 1.25;
+      }
 
-  <section class="section">
-    <h2>About</h2>
-    <div class="about-box">
-      <p>
-        I am an ML Engineer from <b>IIT Bombay</b> with experience building applied AI systems across LLMs, audio, video, and evaluation pipelines. My work has focused on taking ideas from prototype to usable products across media, education, and enterprise AI.
-      </p>
-      <p>
-        I have worked on <b>LLM post-training</b>, <b>LLM-as-a-Judge evaluation systems</b>, <b>video search with VLMs</b>, <b>deepfake audio detection</b>, and <b>multilingual text-to-video pipelines</b>. I previously worked at <b>Bosch</b> and later co-founded an <b>AI consultancy</b> building software for clients.
-      </p>
-      <a class="primary-btn" href="#work">View My Work</a>
-    </div>
-  </section>
+      .project p {
+        max-width: 490px;
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
 
-  <section class="section" id="featured">
-    <h2>Featured Work</h2>
-    <div class="cards">
+      .project-outcome {
+        color: var(--ink);
+        font-weight: 650;
+      }
 
-      <div class="card">
-        <h3>MathReasoner-Mini-1.5B</h3>
-        <div class="meta">LLM Post-Training · SFT + RLVR (GRPO) · Qwen2.5-1.5B</div>
-        <p>
-          Built and post-trained a math reasoning model on top of Qwen2.5-1.5B, achieving <b>25% higher GSM8K accuracy</b>. The work involved supervised fine-tuning, reinforcement learning style post-training, and structured evaluation for reasoning performance.
-        </p>
-        <div class="card-links">
-          <a class="chip" href="https://huggingface.co/aryan-kolapkar/MathReasoner-Mini-1.5b">Model</a>
-          <a class="chip" href="https://huggingface.co/aryan-kolapkar">Profile</a>
-        </div>
-      </div>
+      .project-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 10px;
+        padding-top: 2px;
+        text-align: right;
+      }
 
-      <div class="card">
-        <h3>DeepClip for NDTV</h3>
-        <div class="meta">Video Search · CLIP Embeddings · VLMs · RAG</div>
-        <p>
-          Built an AI-powered text-based video search system that helped editors quickly find newsworthy moments from long video archives. The system used multimodal embeddings and retrieval to reduce manual search time, saving roughly <b>40% editing effort</b>.
-        </p>
-        <div class="card-links">
-          <a class="chip" href="https://www.loom.com/share/bb305a1e7f064e598e2e6577253996ac">Demo</a>
-          <a class="chip" href="https://www.ndtv.com/">NDTV</a>
-        </div>
-      </div>
+      .tech {
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        line-height: 1.45;
+      }
 
-      <div class="card">
-        <h3>Deepfake Audio Detection</h3>
-        <div class="meta">Wav2Vec · Audio Classification · Real-Time Inference</div>
-        <p>
-          Built Wav2Vec-based models on more than <b>2M audio samples</b> for real-time deepfake audio detection. Achieved <b>93% accuracy on ASVspoof</b> with a production-oriented inference pipeline.
-        </p>
-        <div class="card-links">
-          <a class="chip" href="https://www.projectkarna.com/">Project Karna</a>
-        </div>
-      </div>
+      .project-link {
+        font-size: 0.91rem;
+        font-weight: 650;
+      }
 
-      <div class="card">
-        <h3>Indic Text-to-Video Pipeline</h3>
-        <div class="meta">Multilingual Generation · LLMs · Imagen · STT · TTS</div>
-        <p>
-          Built a text-to-video pipeline for government-scheme content targeted at Indian farmers, generating <b>1,500+ videos in 10+ languages</b>. The system orchestrated language, speech, and image/video modules end to end.
-        </p>
-        <div class="card-links">
-          <a class="chip" href="https://play.google.com/store/apps/details?id=com.hullagri">HullAgri</a>
-        </div>
-      </div>
+      .notes-list {
+        border-top: 1px solid var(--ink);
+      }
 
-    </div>
-  </section>
+      .note-link {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr) 28px;
+        gap: 18px;
+        align-items: center;
+        min-height: 84px;
+        border-bottom: 1px solid var(--line);
+        text-decoration: none;
+      }
 
-  <!--<section class="section" id="work">
-    <h2>Work Experience</h2>
-    <div class="timeline">
+      .note-date {
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        font-variant-numeric: tabular-nums;
+        text-transform: uppercase;
+      }
 
-      <div class="timeline-card">
-        <div class="timeline-top">
-          <div>
-            <h3>AI Consultancy</h3>
-            <div class="role">Co-founder · Building AI/ML software for clients</div>
+      .note-title {
+        font-weight: 620;
+        line-height: 1.35;
+      }
+
+      .note-arrow {
+        justify-self: end;
+        color: var(--muted);
+        transition-property: color, transform;
+        transition-duration: 160ms;
+        transition-timing-function: ease-out;
+      }
+
+      .note-link:hover .note-arrow {
+        color: var(--blue);
+        transform: translate(3px, -3px);
+      }
+
+      .life-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .life-item {
+        min-height: 230px;
+        padding: 22px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.36);
+        box-shadow: var(--shadow-ring);
+        transition-property: transform, box-shadow;
+        transition-duration: 180ms;
+        transition-timing-function: ease-out;
+      }
+
+      .life-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-ring-hover);
+      }
+
+      .life-icon {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        margin-bottom: 42px;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .life-icon svg {
+        width: 21px;
+        height: 21px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.7;
+      }
+
+      .life-item:nth-child(2) .life-icon {
+        background: var(--moss);
+      }
+
+      .life-item:nth-child(3) .life-icon {
+        background: var(--rust);
+      }
+
+      .life-item h3 {
+        margin: 0 0 7px;
+        font-size: 1.04rem;
+      }
+
+      .life-item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .about-copy {
+        display: grid;
+        grid-template-columns: 190px 1fr;
+        gap: 40px;
+      }
+
+      .about-copy .label {
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+        text-transform: uppercase;
+      }
+
+      .about-copy p {
+        margin: 0 0 22px;
+      }
+
+      .contact-callout {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .contact-callout h2 {
+        max-width: 540px;
+        margin: 0;
+        font-size: clamp(2.4rem, 7vw, 4.8rem);
+        font-weight: 700;
+        letter-spacing: -0.065em;
+        line-height: 0.98;
+      }
+
+      .button-link {
+        display: inline-flex;
+        min-height: 48px;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 10px;
+        padding: 0 17px 0 19px;
+        border-radius: 999px;
+        background: var(--ink);
+        color: var(--paper);
+        font-size: 0.92rem;
+        font-weight: 650;
+        text-decoration: none;
+        transition-property: background-color, scale;
+        transition-duration: 150ms;
+        transition-timing-function: ease-out;
+      }
+
+      .button-link:hover {
+        background: var(--blue);
+      }
+
+      .button-link svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .site-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 90px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 10px;
+      }
+
+      .js .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        filter: blur(4px);
+        transition-property: opacity, transform, filter;
+        transition-duration: 420ms;
+        transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+      }
+
+      .js .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+
+      @media (max-width: 880px) {
+        .section-index {
+          display: none;
+        }
+      }
+
+      @media (max-width: 680px) {
+        body {
+          font-size: 16px;
+        }
+
+        .site-shell {
+          width: min(calc(100% - 30px), var(--content));
+        }
+
+        .site-header {
+          min-height: 74px;
+        }
+
+        .site-nav {
+          gap: 0;
+        }
+
+        .nav-link {
+          padding-inline: 8px;
+          font-size: 10px;
+        }
+
+        .hero {
+          grid-template-columns: minmax(0, 1fr) 84px;
+          gap: 18px;
+          padding: 66px 0 84px;
+        }
+
+        .hero h1 {
+          grid-column: 1 / -1;
+          margin-bottom: 18px;
+        }
+
+        .portrait-wrap {
+          grid-column: 2;
+          grid-row: 2;
+          margin-top: 6px;
+        }
+
+        .portrait,
+        .portrait-wrap {
+          width: 82px;
+        }
+
+        .portrait {
+          height: 100px;
+        }
+
+        .portrait-wrap::after {
+          display: none;
+        }
+
+        .hero-copy {
+          display: contents;
+        }
+
+        .hero-intro {
+          grid-column: 1;
+          grid-row: 2;
+        }
+
+        .now-block,
+        .socials {
+          grid-column: 1 / -1;
+        }
+
+        .now-block {
+          margin-top: 26px;
+        }
+
+        .socials {
+          margin-top: 26px;
+        }
+
+        .section {
+          padding: 68px 0;
+        }
+
+        .section-heading,
+        .about-copy {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+
+        .section-heading {
+          margin-bottom: 34px;
+        }
+
+        .project {
+          grid-template-columns: 34px minmax(0, 1fr);
+          gap: 12px;
+        }
+
+        .project-meta {
+          grid-column: 2;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          text-align: left;
+        }
+
+        .note-link {
+          grid-template-columns: 1fr 26px;
+          gap: 8px;
+          padding: 18px 0;
+        }
+
+        .note-date {
+          grid-column: 1 / -1;
+        }
+
+        .life-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .life-item {
+          min-height: auto;
+        }
+
+        .life-icon {
+          margin-bottom: 28px;
+        }
+
+        .contact-callout {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .site-footer {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+
+        .js .reveal {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header site-shell">
+      <a class="monogram" href="#top" aria-label="Back to top">AK</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="#work">work</a>
+        <a class="nav-link" href="#notes">notes</a>
+        <a class="nav-link" href="#offline">offline</a>
+        <a class="nav-link" href="#hello">hello</a>
+      </nav>
+    </header>
+
+    <main id="top" class="site-shell">
+      <section class="hero" aria-labelledby="intro-heading">
+        <div class="hero-copy">
+          <h1 id="intro-heading">aryan<br>kolapkar.</h1>
+          <p class="hero-intro">
+            hi, i’m aryan — an <span class="highlight blue">AI engineer</span> who likes turning research ideas into systems people can actually use. i work across LLM post-training, multimodal AI, and evaluation.
+          </p>
+
+          <div class="now-block">
+            <p class="eyebrow">currently curious about</p>
+            <ul class="plain-list">
+              <li>making small language models reason better</li>
+              <li>agents that survive contact with the real world</li>
+              <li>finding the next trail worth getting lost on</li>
+            </ul>
           </div>
-          <div class="date">Aug 2024 to Nov 2025</div>
-        </div>
-        <ul>
-          <li>Built and post-trained <b>MathReasoner-Mini-1.5B</b> for Fermi AI, improving GSM8K performance by 25%.</li>
-          <li>Implemented end-to-end <b>LLM evaluation pipelines</b> for multi-turn tutor systems using LLM-as-a-Judge aligned to human-annotated golden data.</li>
-          <li>Built <b>DeepClip</b> for NDTV for video search and retrieval over long-form media content.</li>
-          <li>Developed multilingual text-to-video systems and real-time audio classification pipelines for client use cases.</li>
-        </ul>
-      </div>
 
-      <div class="timeline-card">
-        <div class="timeline-top">
-          <div>
-            <h3>BGSW, Bosch</h3>
-            <div class="role">ML Engineer · Heart Rate and Emotion Detection</div>
+          <div class="socials" role="group" aria-label="Elsewhere on the internet">
+            <a class="social-link" href="https://github.com/arubittu">github ↗</a>
+            <a class="social-link" href="https://huggingface.co/aryan-kolapkar">hugging face ↗</a>
+            <a class="social-link" href="https://medium.com/@aryan.kolapkar">medium ↗</a>
+            <a class="social-link" href="mailto:aryan.kolapkar@gmail.com">email ↗</a>
           </div>
-          <div class="date">July 2023 to July 2024</div>
         </div>
-        <ul>
-          <li>Trained <b>Contrast-Phys</b> and <b>PhysFormer</b> for heart rate detection from driver-facing dashcam video.</li>
-          <li>Achieved <b>3.5 MAE</b> and <b>2.4 MAE</b> respectively on proprietary data.</li>
-          <li>Implemented <b>SparsePPG</b> signal-processing based extraction from face videos.</li>
-          <li>Designed synthetic data generation pipelines using <b>IP-Adapters</b> and <b>SDXL</b> for emotion-related face generation.</li>
-        </ul>
-      </div>
 
-    </div>
-  </section>-->
-
-  <section class="section">
-    <div class="grid-2">
-      <div class="card">
-        <h2 style="margin-top:0;">Education</h2>
-        <h3>Indian Institute of Technology, Bombay</h3>
-        <div class="meta">B.Tech. in Engineering Physics · 2019 to 2023</div>
-        <p>
-          Undergraduate training in engineering, mathematics, and physics, with growing specialization in machine learning and applied AI systems.
-        </p>
-      </div>
-
-      <div class="card">
-        <h2 style="margin-top:0;">Blogs</h2>
-        <p>
-          I write about LLM training, evaluation, multimodal systems, and practical AI engineering.
-        </p>
-        <div class="card-links">
-          <a class="chip" href="https://medium.com/@aryan.kolapkar">Read on Medium</a>
+        <div class="portrait-wrap">
+          <img class="portrait" src="WhatsApp Image 2026-04-05 at 23.35.07.jpeg" alt="Portrait of Aryan Kolapkar" width="128" height="154">
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="section">
-    <h2>Contact</h2>
-    <div class="footer-contact">
-      <div class="contact-box">
-        <h4>Email</h4>
-        <a href="mailto:aryan.kolapkar@gmail.com">aryan.kolapkar@gmail.com</a>
-        <div class="small">Best for consulting, collaborations, and roles.</div>
-      </div>
+      <section id="work" class="section reveal" aria-labelledby="work-heading">
+        <span class="section-index" aria-hidden="true">01</span>
+        <div class="section-heading">
+          <h2 id="work-heading">selected work</h2>
+          <p>A few systems I’ve built — from reasoning models to tools used by editors, farmers, and security teams.</p>
+        </div>
 
-      <div class="contact-box">
-        <h4>GitHub</h4>
-        <a href="https://github.com/arubittu">github.com/arubittu</a>
-        <div class="small">Code, experiments, and project repositories.</div>
-      </div>
+        <div class="project-list">
+          <article class="project">
+            <span class="project-number">01</span>
+            <div>
+              <h3>MathReasoner-Mini-1.5B</h3>
+              <p>Post-trained a compact Qwen model with SFT and GRPO. <span class="project-outcome">Improved GSM8K accuracy by 25%.</span></p>
+            </div>
+            <div class="project-meta">
+              <span class="tech">LLM / RLVR<br>Qwen 2.5</span>
+              <a class="project-link" href="https://huggingface.co/aryan-kolapkar/MathReasoner-Mini-1.5b">view model ↗</a>
+            </div>
+          </article>
 
-      <div class="contact-box">
-        <h4>HuggingFace</h4>
-        <a href="https://huggingface.co/aryan-kolapkar">huggingface.co/aryan-kolapkar</a>
-        <div class="small">Models, checkpoints, and research artifacts.</div>
-      </div>
-    </div>
-  </section>
+          <article class="project">
+            <span class="project-number">02</span>
+            <div>
+              <h3>DeepClip for NDTV</h3>
+              <p>Built text-based search over long video archives using CLIP, VLMs, and retrieval. <span class="project-outcome">Cut editing effort by roughly 40%.</span></p>
+            </div>
+            <div class="project-meta">
+              <span class="tech">VIDEO SEARCH<br>VLM / RAG</span>
+              <a class="project-link" href="https://www.loom.com/share/bb305a1e7f064e598e2e6577253996ac">watch demo ↗</a>
+            </div>
+          </article>
 
-</div>
+          <article class="project">
+            <span class="project-number">03</span>
+            <div>
+              <h3>Deepfake audio detection</h3>
+              <p>Trained Wav2Vec-based classifiers over more than two million samples. <span class="project-outcome">Reached 93% accuracy on ASVspoof.</span></p>
+            </div>
+            <div class="project-meta">
+              <span class="tech">AUDIO<br>WAV2VEC</span>
+              <a class="project-link" href="https://www.projectkarna.com/">project karna ↗</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <span class="project-number">04</span>
+            <div>
+              <h3>Indic text-to-video pipeline</h3>
+              <p>Orchestrated language, speech, and image models for agricultural content. <span class="project-outcome">Generated 1,500+ videos in 10+ languages.</span></p>
+            </div>
+            <div class="project-meta">
+              <span class="tech">MULTIMODAL<br>LLM / TTS</span>
+              <a class="project-link" href="https://play.google.com/store/apps/details?id=com.hullagri">see product ↗</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="notes" class="section reveal" aria-labelledby="notes-heading">
+        <span class="section-index" aria-hidden="true">02</span>
+        <div class="section-heading">
+          <h2 id="notes-heading">notes</h2>
+          <p>I write the kind of explanations I wish I had when I was learning — theory, experiments, code, and what broke.</p>
+        </div>
+
+        <div class="notes-list">
+          <a class="note-link" href="https://medium.com/@aryan.kolapkar/infogan-learning-to-generate-controllable-images-from-scratch-pytorch-31a49ffc7b98">
+            <span class="note-date">Feb 2022 · GANs</span>
+            <span class="note-title">InfoGAN: learning to generate controllable images from scratch</span>
+            <span class="note-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="note-link" href="https://medium.com/@aryan.kolapkar/mountaincar-using-neural-nets-in-pytorch-e4ad9bbce5e3">
+            <span class="note-date">Dec 2021 · RL</span>
+            <span class="note-title">MountainCar using neural nets in PyTorch</span>
+            <span class="note-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="note-link" href="https://medium.com/@aryan.kolapkar/solving-the-openai-gym-mountaincar-v0-problem-9b0c68b93850">
+            <span class="note-date">Nov 2021 · RL</span>
+            <span class="note-title">Solving the OpenAI Gym MountainCar-v0 problem</span>
+            <span class="note-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+
+      <section id="offline" class="section reveal" aria-labelledby="offline-heading">
+        <span class="section-index" aria-hidden="true">03</span>
+        <div class="section-heading">
+          <h2 id="offline-heading">away from the keyboard</h2>
+          <p>Because a useful personal site should say something about the person, not just the stack.</p>
+        </div>
+
+        <div class="life-grid">
+          <article class="life-item">
+            <span class="life-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m3 19 6.5-10 3 4 2-3L21 19H3Z"/><path d="m7.5 15 2-2 2 2"/></svg>
+            </span>
+            <h3>treks</h3>
+            <p>Long climbs, bad network, good views — the best kind of reset.</p>
+          </article>
+
+          <article class="life-item">
+            <span class="life-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 18.5c4.5-1 7.5-4.5 8.5-9L14 3l2 1-1.5 6.5c-1 5-4.5 9-9.5 10L4 18.5Z"/><path d="m13 7 4 1"/><path d="m15 15 4 4"/></svg>
+            </span>
+            <h3>solo trips</h3>
+            <p>A loose plan, one backpack, and enough time to follow the interesting detour.</p>
+          </article>
+
+          <article class="life-item">
+            <span class="life-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M15.5 3.5 20 8l-9.5 9.5c-2.5 2.5-6 2-7-1s1.5-5.5 4-5l8-8Z"/><path d="m12 7 5 5"/><circle cx="7" cy="16" r="1.5"/></svg>
+            </span>
+            <h3>electric guitar</h3>
+            <p>Still chasing cleaner bends, tighter rhythm, and the tone that exists in my head.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" aria-labelledby="about-heading">
+        <span class="section-index" aria-hidden="true">04</span>
+        <div class="section-heading">
+          <h2 id="about-heading">the short version</h2>
+          <p>A little context, without turning this page into a downloadable résumé.</p>
+        </div>
+
+        <div class="about-copy">
+          <span class="label">background</span>
+          <div>
+            <p>I studied Engineering Physics at <span class="highlight rust">IIT Bombay</span>, then worked on computer vision at Bosch before co-founding an AI consultancy.</p>
+            <p>My work sits between research and product: I enjoy reading the paper, building the pipeline, measuring the result, and getting the final thing into someone’s hands.</p>
+            <p>For code and ongoing experiments, head to <a class="inline-link" href="https://github.com/arubittu">GitHub</a>. For models and checkpoints, there’s <a class="inline-link" href="https://huggingface.co/aryan-kolapkar">Hugging Face</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="hello" class="section reveal" aria-labelledby="hello-heading">
+        <span class="section-index" aria-hidden="true">05</span>
+        <div class="contact-callout">
+          <h2 id="hello-heading">building something interesting?</h2>
+          <a class="button-link" href="mailto:aryan.kolapkar@gmail.com">
+            say hello
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer site-shell">
+      <span>© <span id="year">2026</span> aryan kolapkar</span>
+      <span>made with curiosity + plain HTML</span>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const sections = document.querySelectorAll(".reveal");
+
+      if (reducedMotion || !("IntersectionObserver" in window)) {
+        sections.forEach((section) => section.classList.add("is-visible"));
+      } else {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        sections.forEach((section) => observer.observe(section));
+      }
+    </script>
+  </body>
+</html>
