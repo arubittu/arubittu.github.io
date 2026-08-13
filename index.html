@@ -148,7 +148,7 @@
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) 132px;
+        grid-template-columns: minmax(0, 1fr);
         gap: 52px;
         align-items: start;
         padding: 92px 0 116px;
@@ -168,34 +168,6 @@
         margin: 0;
         font-size: clamp(1.08rem, 2.6vw, 1.26rem);
         line-height: 1.55;
-      }
-
-      .portrait-wrap {
-        position: relative;
-        margin-top: 10px;
-        transform: rotate(2deg);
-      }
-
-      .portrait-wrap::after {
-        content: "me, somewhere sunny";
-        display: block;
-        margin-top: 9px;
-        color: var(--muted);
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-        font-size: 10px;
-        text-align: center;
-      }
-
-      .portrait {
-        display: block;
-        width: 128px;
-        height: 154px;
-        object-fit: cover;
-        border-radius: 3px;
-        outline: 1px solid rgba(0, 0, 0, 0.1);
-        outline-offset: -1px;
-        box-shadow: var(--shadow-ring);
-        filter: saturate(0.82) contrast(1.02);
       }
 
       .highlight {
@@ -617,7 +589,7 @@
         }
 
         .hero {
-          grid-template-columns: minmax(0, 1fr) 84px;
+          grid-template-columns: minmax(0, 1fr);
           gap: 18px;
           padding: 66px 0 84px;
         }
@@ -625,25 +597,6 @@
         .hero h1 {
           grid-column: 1 / -1;
           margin-bottom: 18px;
-        }
-
-        .portrait-wrap {
-          grid-column: 2;
-          grid-row: 2;
-          margin-top: 6px;
-        }
-
-        .portrait,
-        .portrait-wrap {
-          width: 82px;
-        }
-
-        .portrait {
-          height: 100px;
-        }
-
-        .portrait-wrap::after {
-          display: none;
         }
 
         .hero-copy {
@@ -787,9 +740,6 @@
           </div>
         </div>
 
-        <div class="portrait-wrap">
-          <img class="portrait" src="WhatsApp Image 2026-04-05 at 23.35.07.jpeg" alt="Portrait of Aryan Kolapkar" width="128" height="154">
-        </div>
       </section>
 
       <section id="work" class="section reveal" aria-labelledby="work-heading">
